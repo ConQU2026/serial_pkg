@@ -1,4 +1,4 @@
-# Auto Serial For Ros2
+# Auto Serial Communication for Ros2
 
 
 ## 项目说明
@@ -10,7 +10,7 @@
 
 > ****⚠注意该项目当前仅支持固定长度的数据类型, 例如: uint8_t****
 
-## 功能特性
+### 特性
 
 - **通用协议定义**: 在 `protocol.hpp` 中集中管理通信协议（帧头、帧尾、数据结构）。
 - **自动封包/解包**: `PacketHandler` 自动处理帧头、帧尾和校验和。
@@ -128,6 +128,7 @@ colcon test --event-handlers console_cohesion+ --packages-select serial_pkg
 
 ## TODO
 
-- [ ] 自动生成电控对应 C 代码模块。
-- [ ] udev script 自动配置串口权限。
-- [ ] 支持自定义接口
+-  自动生成电控对应 C 代码模块。
+
+- ~~udev script 自动配置串口权限~~
+-  支持自定义接口
