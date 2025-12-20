@@ -1,4 +1,5 @@
-# Serial Package
+# Auto Serial For Ros2
+
 
 ## 项目说明
 
@@ -7,6 +8,7 @@
 - **可拓展性强**: 提供简单的接口来绑定 ROS 话题和串口数据包, 后续增减传输数据非常简单
 - **高效**: 基于 `serial_driver` 和 `asio` 实现异步 I/O。
 
+> ****⚠注意该项目当前仅支持固定长度的数据类型, 例如: uint8_t****
 
 ## 功能特性
 
@@ -18,6 +20,17 @@
 - **参数配置**: 支持通过 ROS 参数配置串口端口和波特率。
 
 ## 快速开始
+
+### 辅助脚本说明
+
+- `auto_udev` 自动为usb设置设置udev
+
+### 0. 安装依赖
+> 本项目基于`ros2 humble`进行开发
+
+```bash
+sudo apt install ros-humble-serial-driver libasio-dev
+```
 
 ### 1. 定义协议 (`include/serial_pkg/protocol.hpp`)
 
@@ -87,7 +100,7 @@ void SerialController::register_rx_handlers()
 
 | 参数名 | 类型 | 默认值 | 说明 |
 | :--- | :--- | :--- | :--- |
-| `port` | string | `/dev/ttyUSB0` | 串口设备路径 |
+| `port` | string | `/dev/ttyACM0` | 串口设备路径 |
 | `baudrate` | int | `115200` | 波特率 |
 | `timeout` | double | `0.1` | 超时时间 (秒) |
 | `serial_frequency` | double | `100.0` | 串口频率 (Hz) |
@@ -102,13 +115,19 @@ void SerialController::register_rx_handlers()
 
 ## TEST
 
+- `test_scocat` 测试scocat是否正常工作
+- `test_main` 系统测试(虚拟串口)
+- `test_transmit_verify` 测试数据包接发是否正常(无虚拟串口)  
+
+使用以下命令进行测试
 ```bash
 colcon test --event-handlers console_cohesion+ --packages-select serial_pkg 
 ```
+
+
 
 ## TODO
 
 - [ ] 自动生成电控对应 C 代码模块。
 - [ ] udev script 自动配置串口权限。
 - [ ] 支持自定义接口
-

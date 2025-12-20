@@ -13,7 +13,7 @@ namespace
     int32_t count;
   };
 
-  // --- 2. 测试：完整的打包与解包流程 (自发自收) ---
+  // --- 2. 测试：完整的打包与解包流程 ---
   TEST(PacketHandlerTest, FullPackAndParse)
   {
     PacketHandler handler;
