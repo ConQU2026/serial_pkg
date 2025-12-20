@@ -1,7 +1,7 @@
 #include "serial_pkg/serial_controller.hpp"
 #include "rclcpp_components/register_node_macro.hpp"
 
-namespace serial_pkg
+namespace auto_serial_bridge
 {
   SerialController::SerialController(const rclcpp::NodeOptions &options)
       : Node("serial_controller", options),
@@ -160,6 +160,6 @@ namespace serial_pkg
       }
     }
   }
-} // namespace serial_pkg
+} // namespace auto_serial_bridge
 
-RCLCPP_COMPONENTS_REGISTER_NODE(serial_pkg::SerialController)
+RCLCPP_COMPONENTS_REGISTER_NODE(auto_serial_bridge::SerialController)

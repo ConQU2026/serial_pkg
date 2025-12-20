@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(serial_pkg) # TODO: 修改为你的包名
+project(auto_serial_bridge) # TODO: 修改为你的包名
 
 # ==============================================================================
 # 1. 编译选项 (Compiler Options)
@@ -47,7 +47,7 @@ ament_target_dependencies(${PROJECT_NAME}_lib ${dependencies})
 
 # 注册组件
 rclcpp_components_register_nodes(${PROJECT_NAME}_lib
-  "serial_pkg::SerialController"
+  "auto_serial_bridge::SerialController"
 )
 
 # ==============================================================================

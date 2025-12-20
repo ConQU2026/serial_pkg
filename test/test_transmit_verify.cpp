@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include "serial_pkg/packet_handler.hpp"
 
-using namespace serial_pkg;
+using namespace auto_serial_bridge;
 
 namespace
 {

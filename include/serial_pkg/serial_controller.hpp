@@ -15,7 +15,7 @@
 #include "serial_pkg/packet_handler.hpp"
 #include "serial_pkg/protocol.hpp"
 
-namespace serial_pkg
+namespace auto_serial_bridge
 {
   class SerialController : public rclcpp::Node
   {
@@ -144,4 +144,4 @@ namespace serial_pkg
     double timeout_;
     double serial_frequency_;
   };
-} // namespace serial_pkg
+} // namespace auto_serial_bridge

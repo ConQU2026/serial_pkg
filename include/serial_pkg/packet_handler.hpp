@@ -5,7 +5,7 @@
 #include <cstring>
 #include <iostream>
 
-namespace serial_pkg
+namespace auto_serial_bridge
 {
 
   class PacketHandler

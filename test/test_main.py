@@ -23,7 +23,7 @@ ID_CMD_VEL = 0x01
 
 @pytest.mark.launch_test
 def generate_test_description():
-    package_name = 'serial_pkg'
+    package_name = 'auto_serial_bridge'
     
     my_pkg_share = get_package_share_directory(package_name)
     
@@ -41,8 +41,8 @@ def generate_test_description():
     # Create component
     serial_component = ComposableNode(
         package=package_name,
-        plugin='serial_pkg::SerialController',
-        name='serial_pkg_node',
+        plugin='auto_serial_bridge::SerialController',
+        name='auto_serial_bridge_node',
         parameters=[common_config, {'port': '/tmp/vtty1'}],
         extra_arguments=[{'use_intra_process_comms': True}],
     )

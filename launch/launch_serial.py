@@ -25,7 +25,7 @@ def generate_launch_description():
     # 1. 全局配置区
     # ========================================================================
     # 你的包名 
-    package_name = 'serial_pkg'
+    package_name = 'auto_serial_bridge'
     
     # 获取 share 目录
     my_pkg_share = get_package_share_directory(package_name)
@@ -41,10 +41,10 @@ def generate_launch_description():
             composable_node_descriptions=[
                 ComposableNode(
                     package= package_name,
-                    plugin='serial_pkg::SerialController', # 必须与宏注册的名称一致
+                    plugin='auto_serial_bridge::SerialController',
                     name='serial_controller',
                     parameters=[common_config],     
-                    extra_arguments=[{'use_intra_process_comms': True}] # 开启进程内通信
+                    extra_arguments=[{'use_intra_process_comms': True}]
                 ),
                 # 你可以在这里继续添加其他组件，让它们跑在同一个进程里
             ],
