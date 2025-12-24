@@ -1,0 +1,42 @@
+protocol_settings:
+  head_byte_A: 0xAA
+  head_byte_B: 0x55
+  checksum: "CRC8" 
+
+type_mappings:
+  f32: "float"
+  i32: "int32_t"
+  u8:  "uint8_t"
+  u16: "uint16_t"
+  u32: "uint32_t"
+  bool: "uint8_t"
+
+messages:
+  # 0x00 Reserved for Handshake
+  - name: "Handshake"
+    id: 0x00
+    direction: "bidirectional"
+    ros_msg: "std_msgs/msg/UInt32"
+    topic: "/serial/handshake"
+    fields:
+      - { proto: "proto_hash", type: "u32", ros: "data" }
+
+  # 0x01 Heartbeat
+  - name: "Heartbeat"
+    id: 0x01
+    direction: "bidirectional"
+    ros_msg: "std_msgs/msg/UInt8"
+    topic: "/serial/heartbeat"
+    fields:
+      - { proto: "counter", type: "u8", ros: "data" }
+
+  # Example Control Command
+  - name: "CmdVel"
+    id: 0x03
+    direction: "tx"
+    ros_msg: "geometry_msgs/msg/Twist"
+    topic: "/cmd_vel"
+    fields:
+      - { proto: "linear_x",  type: "f32", ros: "linear.x" }
+      - { proto: "linear_y",  type: "f32", ros: "linear.y" }
+      - { proto: "angular_z", type: "f32", ros: "angular.z" }

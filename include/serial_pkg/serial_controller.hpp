@@ -142,6 +142,7 @@ namespace auto_serial_bridge
      * @param id 发送的数据包 ID
      * @param converter 将 ROS 消息转换为协议数据的转换函数
      */
+     
     template <typename MsgT, typename DataT>
     void bind_topic_to_serial(
         const std::string &topic_name,

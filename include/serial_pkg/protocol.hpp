@@ -20,8 +20,8 @@ enum PacketID : uint8_t {
  * 定义了数据包的头部信息，包含帧头字节、功能码和数据长度。
  */
 struct __attribute__((packed)) FrameHeader {
-  uint8_t head;    // 帧头字节 (kHeadByte)
-  uint8_t id;      // 功能码 (PacketID)
+  uint8_t head;    // 帧头字节 
+  uint8_t id;      // 功能码
   uint8_t length;  // 数据长度
 };
 
@@ -32,7 +32,7 @@ struct __attribute__((packed)) FrameHeader {
  */
 struct __attribute__((packed)) FrameTail {
   uint8_t checksum;  // 校验和
-  uint8_t tail;      // 帧尾字节 (kTailByte)
+  uint8_t tail;      // 帧尾字节 
 };
 
 /**
@@ -41,9 +41,9 @@ struct __attribute__((packed)) FrameTail {
  * 包含机器人的线速度和角速度信息。
  */
 struct __attribute__((packed)) CmdVelData {
-  float linear_x;   // 线速度 x (m/s)
-  float angular_z;  // 角速度 z (rad/s)
-  // float linear_y; // 麦轮解算使用 (预留)
+  float linear_x;   // 线速度 x 
+  float angular_z;  // 角速度 z 
+  // float linear_y; // 麦轮解算使用 
 };
 
 // 缓存接收数据结构体

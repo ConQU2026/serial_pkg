@@ -30,6 +30,7 @@ namespace auto_serial_bridge
      * @return uint8_t 校验和结果
      */
     template <typename Iterator>
+    //改为CRC8
     static uint8_t calculate_checksum(Iterator start, size_t len)
     {
       uint8_t sum = 0;
@@ -63,10 +64,11 @@ namespace auto_serial_bridge
       packet.push_back(kHeadByte);
       // 2. 压入 ID (强制转换成 uint8_t)
       packet.push_back(static_cast<uint8_t>(id));
+
       // 3. 压入数据长度
       packet.push_back(sizeof(T));
 
-      // 4. 压入数据 (使用批量插入优化)
+      // 4. 压入数据 
       const uint8_t *ptr = reinterpret_cast<const uint8_t *>(&data);
       packet.insert(packet.end(), ptr, ptr + sizeof(T));
 
@@ -139,10 +141,11 @@ namespace auto_serial_bridge
           continue;
         }
 
-        // 提取数据 (preserve capacity to avoid reallocation)
+        // 提取数据
         out_packet.id = static_cast<PacketID>(id_byte);
         out_packet.data_buffer.clear();
-        // Only reserve if current capacity is insufficient
+
+        // 如果当前容量不足以容纳数据，进行预留
         if (out_packet.data_buffer.capacity() < data_len) {
           out_packet.data_buffer.reserve(data_len);
         }
